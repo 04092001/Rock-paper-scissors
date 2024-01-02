@@ -1,0 +1,16 @@
+div {
+  display: flex;
+  justify-content: center;
+}
+
+div button {
+  margin: 10px 10px;
+}
+
+p {
+  text-align: center;
+}
+
+.gameScore p {
+  margin: 20px;
+}
