@@ -28,7 +28,6 @@ function getRandomChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = getPlayerChoice();
   computerSelection = getRandomChoice();
   console.log("Player chose: " + playerSelection);
   console.log("Computer chose: " + computerSelection);
@@ -69,17 +68,19 @@ const paperBtn = document.getElementById("paperBtn");
 const scissorsBtn = document.getElementById("scissorsBtn");
 
 rockBtn.addEventListener("click", () => {
-  playRound();
+  playRound("Rock");
 });
 
 paperBtn.addEventListener("click", () => {
-  playerSelection = "Paper";
+  playRound("Paper");
 });
 
 scissorsBtn.addEventListener("click", () => {
-  playerSelection = "Scissors";
+  playRound("Scissors");
 });
 
 //player score
 //computer score
 //gameOver()
+
+// Turn console.log()'s into textContent's
