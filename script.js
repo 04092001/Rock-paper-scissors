@@ -29,8 +29,7 @@ function getRandomChoice() {
 
 function playRound(playerSelection, computerSelection) {
   computerSelection = getRandomChoice();
-  console.log("Player chose: " + playerSelection);
-  console.log("Computer chose: " + computerSelection);
+  UIcomputerChoice.textContent = "Computer Chose:" + computerSelection;
 
   if (
     (playerSelection === "Rock" && computerSelection === "Scissors") ||
@@ -39,8 +38,7 @@ function playRound(playerSelection, computerSelection) {
   ) {
     console.log("Player Wins!");
     playerScore++;
-    console.log("Player score is: " + playerScore);
-    console.log("Computer score is: " + computerScore);
+    gameOutcome.textContent = "Game Outcome: Player Wins!";
     UIplayerScore.textContent = "Player score is: " + playerScore;
   }
   if (
@@ -50,37 +48,41 @@ function playRound(playerSelection, computerSelection) {
   ) {
     console.log("Computer Wins!");
     computerScore++;
-    console.log("Player score is: " + playerScore);
-    console.log("Computer score is: " + computerScore);
+    gameOutcome.textContent = "Game Outcome: Computer Wins!";
     UIcomputerScore.textContent = "Computer score is: " + computerScore;
   }
 
   if (playerSelection === computerSelection) {
     console.log("Draw");
+    gameOutcome.textContent = "Game Outcome: Draw";
   }
 }
 
 // UI
 const UIplayerScore = document.getElementById("playerScore");
 const UIcomputerScore = document.getElementById("computerScore");
+const UIplayerChoice = document.getElementById("playerChoice");
+const UIcomputerChoice = document.getElementById("computerChoice");
+const gameOutcome = document.getElementById("gameOutcome");
 const rockBtn = document.getElementById("rockBtn");
 const paperBtn = document.getElementById("paperBtn");
 const scissorsBtn = document.getElementById("scissorsBtn");
 
 rockBtn.addEventListener("click", () => {
   playRound("Rock");
+  UIplayerChoice.textContent = "Player Choice is: Rock";
 });
 
 paperBtn.addEventListener("click", () => {
   playRound("Paper");
+  UIplayerChoice.textContent = "Player Choice is: Paper";
 });
 
 scissorsBtn.addEventListener("click", () => {
-  playRound("Scissors");
+  playRound("Scissors`");
+  UIplayerChoice.textContent = "Player Choice is: Scissors";
 });
 
-//player score
-//computer score
 //gameOver()
 
 // Turn console.log()'s into textContent's
