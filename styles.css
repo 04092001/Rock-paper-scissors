@@ -1,3 +1,7 @@
+body {
+  margin-top: 250px;
+}
+
 div {
   display: flex;
   justify-content: center;
@@ -11,6 +15,10 @@ p {
   text-align: center;
 }
 
-.gameScore p {
+.game_choices p {
+  margin: 20px;
+}
+
+.game_score p {
   margin: 20px;
 }
