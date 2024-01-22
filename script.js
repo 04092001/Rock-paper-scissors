@@ -1,3 +1,6 @@
+// TO-DO
+// Make it clearer when the round has changed
+
 // GAME
 let playerScore = 0;
 let computerScore = 0;
@@ -40,6 +43,7 @@ function playRound(playerSelection, computerSelection) {
   ) {
     playerScore++;
     roundOutcome.textContent = "Round Outcome: Player Wins!";
+    trackScore("player");
   }
   if (
     (computerSelection === "Rock" && playerSelection === "Scissors") ||
@@ -48,10 +52,12 @@ function playRound(playerSelection, computerSelection) {
   ) {
     computerScore++;
     roundOutcome.textContent = "Round Outcome: Computer Wins!";
+    trackScore("computer");
   }
 
   if (playerSelection === computerSelection) {
     roundOutcome.textContent = "Round Outcome: Draw";
+    trackScore("draw");
   }
 
   if (playerScore === 5 || computerScore === 5) {
@@ -61,19 +67,27 @@ function playRound(playerSelection, computerSelection) {
     updateScore();
   }
 }
-
+function trackScore(player) {
+  const tracker = document.createElement("p");
+  tracker.innerText = player = player[0].toUpperCase();
+  scoreTracker.appendChild(tracker);
+}
 function displayWinner() {
   if (playerScore === 5) {
-    roundOutcome.textContent = "Player Wins the Game!";
+    alert("Player has won the game!");
   }
   if (computerScore === 5) {
-    roundOutcome.textContent = "Computer Wins the Game!";
+    alert("Computer has won the game!");
   }
 }
 
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
+  roundOutcome.textContent = "Round Outcome:";
+  UIcomputerChoice.textContent = "Computer Choice is: ";
+  UIplayerChoice.textContent = "Player Choice is: ";
+  scoreTracker.textContent = " ";
   updateScore();
 }
 
@@ -91,6 +105,7 @@ const roundOutcome = document.getElementById("roundOutcome");
 const rockBtn = document.getElementById("rockBtn");
 const paperBtn = document.getElementById("paperBtn");
 const scissorsBtn = document.getElementById("scissorsBtn");
+const scoreTracker = document.getElementById("scoreTracker");
 
 rockBtn.addEventListener("click", () => {
   playRound("Rock");
@@ -103,6 +118,3 @@ paperBtn.addEventListener("click", () => {
 scissorsBtn.addEventListener("click", () => {
   playRound("Scissors");
 });
-
-// Make it clearer when the round has changed
-// Track previous rounds below the game with W / L / D etc.
